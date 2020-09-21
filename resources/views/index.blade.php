@@ -11,9 +11,8 @@
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <h1 class="my-4">おっくんの政治ブログ
-          <small>ロゴ</small>
-        </h1>
+        <img src="img\logo.jpg">
+          <small></small>
 
         <!-- Blog Post -->
         <div class="card mb-4">
