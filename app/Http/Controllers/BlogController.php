@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\board;
+
 
 
 class BlogController extends Controller
@@ -14,7 +16,7 @@ class BlogController extends Controller
 
     public function index (Request $request)
     {
-        $tags = Tag::pluck('id','name')->toArray();
+        //$tags = Tag::pluck('id','name')->toArray();
         //dd($tags);
         $user = Auth::user();
         $user_id = Auth::id();
@@ -31,6 +33,24 @@ class BlogController extends Controller
         //$tags = Tag::pluck('id','name')->toArray();
         return view('boards.add',['user'=>$user],['tags' =>  $this->TAGS]);
     }
+
+    public function create(Request $request)
+    {
+
+        $this->validate($request,board::$rules); //バリデーション
+        $user_id = Auth::id(); // ログインユーザIDを取得する
+        $board = new board;
+        $board->title = $request->title;
+        $board->text = $request->text;
+        $board->user_id = $user_id;
+        $board->tag = $request->tag;
+        //dd($event->user_id);
+
+       // $event->tags()->sync($request->tags);
+        $board->save();
+        return redirect('/');
+    }
+
 
 
     public function blog()

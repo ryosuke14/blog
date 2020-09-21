@@ -13,7 +13,7 @@
                     </ul>
                 </div>
                 @endif
-                    <form action="{{ create }}" method ="post">
+                    <form action="/board/create" method ="post">
                         @csrf
                         <div class="form-group row">
                             <label for="date" class="col-md-4 col-form-label text-md-right">タイトル</label>
@@ -36,8 +36,6 @@
                                 <input type="checkbox" name="tag" value="{{$tag}}" id="tag{{$key}}">{{$key}}</input>
                             </div>
                             @endforeach
-
-
                             </div>
                         </div>
 
