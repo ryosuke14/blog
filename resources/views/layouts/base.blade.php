@@ -24,6 +24,27 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">おっくんの政治ブログ</a>
+      @if (Auth::check())
+
+                    @auth
+                    <form action="/admin" method="post">
+                    @csrf
+                      <input type="submit" class="btn btn-primary" value="{{ $user->name }} 記事投稿">
+                    </form>
+                    @else
+                    @endauth
+
+                    @auth
+                    <form action="/logout" method="post">
+                    @csrf
+                      <input type="submit" class="btn btn-primary" value="ログアウト">
+                    </form>
+
+                    @endauth
+
+                    
+      @endif
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
