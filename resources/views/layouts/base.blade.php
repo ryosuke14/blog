@@ -48,8 +48,8 @@
                                         @csrf
                                     </form>
 
-                                    <a class="dropdown-item" href="">記事作成</a>
-                                    <form id="logout-form" action="" method="POST" class="d-none">
+                                    <a class="dropdown-item" href='/board/add'>記事作成</a>
+                                    <form id="logout-form" action='/board/add' method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
