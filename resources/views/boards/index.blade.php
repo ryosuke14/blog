@@ -16,10 +16,11 @@
 
         <!-- Blog Post -->
         <div class="card mb-4">
+        @foreach($boards as $board)
           <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
           <div class="card-body">
-            <h2 class="card-title">Post Title</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <h2 class="card-title">{{$board->title}}</h2>
+            <p class="card-text">{{$board->text}}</p>
             <a href="{{ route('blog') }}" class="btn btn-primary">もっと読む &rarr;</a>
           </div>
           <div class="card-footer text-muted">
