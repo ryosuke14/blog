@@ -24,8 +24,7 @@
             <a href="" class="btn btn-primary">もっと読む &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Posted on January 1, 2020 by
-            <a href="#">Start Bootstrap</a>
+          投稿日：{{ $board->created_at }}
           </div>
         @endforeach
         </div>
