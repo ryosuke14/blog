@@ -21,7 +21,7 @@
           <div class="card-body">
             <h2 class="card-title">{{$board->title}}</h2>
             <p class="card-text">{{$board->text}}</p>
-            <a href="{{ route('detail') }}" class="btn btn-primary">もっと読む &rarr;</a>
+            <a href="" class="btn btn-primary">もっと読む &rarr;</a>
           </div>
           <div class="card-footer text-muted">
             Posted on January 1, 2020 by

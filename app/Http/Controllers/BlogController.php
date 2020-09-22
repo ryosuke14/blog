@@ -21,10 +21,10 @@ class BlogController extends Controller
         $user = Auth::user();
         $user_id = Auth::id();
         //$sort = $request->sort;
-        //$boards = DB::table('boards')->simplePaginate(5);
+        $boards = DB::table('boards')->simplePaginate(5);
         //dd($user->name);
         //return view('events.index',['events'=>$events], ['tags' =>  $this->TAGS], ['user' => $user]);
-        return view('boards.index',['user'=>$user],['tags' =>  $this->TAGS]);    
+        return view('boards.index',['user'=>$user],['boards'=>$boards],['tags' =>  $this->TAGS]);    
     }
 
     public function add()
