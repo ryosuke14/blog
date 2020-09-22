@@ -21,7 +21,7 @@
           <div class="card-body">
             <h2 class="card-title">{{$board->title}}</h2>
             <p class="card-text">{{$board->text}}</p>
-            <a href="" class="btn btn-primary">もっと読む &rarr;</a>
+            <a href="{{ route('blog') }}" class="btn btn-primary">もっと読む &rarr;</a>
           </div>
           <div class="card-footer text-muted">
           投稿日：{{ $board->created_at }}
