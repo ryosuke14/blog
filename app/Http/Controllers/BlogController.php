@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\board;
-
+use App\Tag;
+use App\Photo;
 
 
 class BlogController extends Controller
@@ -27,6 +28,13 @@ class BlogController extends Controller
         return view('boards.index',['user'=>$user],['tags' =>  $this->TAGS]);    
     }
 
+    public function imgValidate(Request $request)
+    {
+        return $request->validate([
+            'photo' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+        ]);
+    }
+
     public function add()
     {
         $user = Auth::user();
@@ -34,21 +42,34 @@ class BlogController extends Controller
         return view('boards.add',['user'=>$user],['tags' =>  $this->TAGS]);
     }
 
-    public function create(Request $request)
+    public function create(Request $request, Board $board)
     {
-
         $this->validate($request,board::$rules); //バリデーション
+        $this->imgValidate($request);
+        $uploadedFile = $this->saveImage($request->file('photo'));
         $user_id = Auth::id(); // ログインユーザIDを取得する
-        $board = new board;
-        $board->title = $request->title;
-        $board->text = $request->text;
         $board->user_id = $user_id;
-        $board->tag = $request->tag;
+        $inputs = $request->input();
+        $data = [
+            'inputs'       => $inputs,
+            'tags'         => Tag::find($request->tag)->pluck('tag', 'id')->toArray(),
+            'uploadedFile' => str_replace('public', 'storage', $uploadedFile)
+        ];
         //dd($event->user_id);
 
        // $event->tags()->sync($request->tags);
-        $board->save();
-        return redirect('/');
+        $request->session()->put('data', $data);
+        return view('boards.check', $data);
+    }
+
+    public function check(Request $request)
+    {
+        return view('boards.');
+    }
+
+    public function saveImage($file)
+    {
+        return $file->storeAs('public/tmp_images', $file->hashName());
     }
 
     public function edit($id)

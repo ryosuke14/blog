@@ -11,4 +11,9 @@ class board extends Model
         'title' => 'required|min:3',
         'text' => 'required',
     );
+
+    public function photo()
+    {
+        return $this->hasOne('App\photo');
+    }
 }
