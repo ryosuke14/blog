@@ -51,6 +51,13 @@ class BlogController extends Controller
         return redirect('/');
     }
 
+    public function edit($id)
+    {
+        $user = Auth::user();
+       // $data = $request->$event->id;
+        $board = board::find($id);
+        return view('board.edit',['board'=>$board],['user'=>$user]);
+    }
 
 
     public function blog()
