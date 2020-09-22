@@ -11,10 +11,10 @@
  <title>@yield('title')</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/blog-home.css" rel="stylesheet">
+  <link href="{{ asset('css/blog-home.css') }}" rel="stylesheet">
 
 </head>
 
@@ -25,38 +25,32 @@
     <div class="container">
       <a class="navbar-brand" href="#">おっくんの政治ブログ</a>
       @if (Auth::check())
+        <li class="nav-item dropdown">
+          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+              {{ Auth::user()->name }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+              </a>
 
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
 
-                    <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+              <a class="dropdown-item" href="">記事一覧</a>
+              <form id="logout-form" action="" method="POST" class="d-none">
+                  @csrf
+              </form>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-
-                                    <a class="dropdown-item" href="">記事一覧</a>
-                                    <form id="logout-form" action="" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-
-                                    <a class="dropdown-item" href='/board/add'>記事作成</a>
-                                    <form id="logout-form" action='/board/add' method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-
-
-                    
+               <a class="dropdown-item" href="{{ route('add') }}">記事作成</a>
+              <form id="logout-form" action='/board/add' method="POST" class="d-none">
+                  @csrf
+              </form>
+          </div>
+        </li>
       @endif
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,8 +88,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 

@@ -1,3 +1,8 @@
+@extends('layouts.base')
+
+@section('title', 'ブログ詳細')
+
+@section('content')
 
 <div class="container">
     <div class="row justify-content-center">
@@ -32,15 +37,11 @@
                             <div class="col-md-6">
                             @foreach($tags as $key=>$tag)
                             <div class="form-check form-check-inline">
-
-                                <input type="checkbox" name="tag" value="{{$tag}}" id="tag{{$key}}">{{$key}}</input>
+                                <input type="checkbox" name="tag" value="{{$tag}}" id="tag{{$key}}">{{$key}}
                             </div>
                             @endforeach
                             </div>
                         </div>
-
-
-
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4 mt:10">
                                 <button type="submit" class="btn btn-primary" >
@@ -55,4 +56,4 @@
         </div>
     </div>
 </div>
-
+@endsection
