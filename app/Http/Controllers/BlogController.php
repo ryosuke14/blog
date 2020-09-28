@@ -34,12 +34,29 @@ class BlogController extends Controller
         return view('boards.add',['user'=>$user],['tags' =>  $this->TAGS]);
     }
 
-    public function create(Request $request)
+    public function imgValidate(Request $request)
+    {
+        return $request->validate([
+            'photo' => ['required', 'file', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+        ]);
+    }
+
+    public function check(Request $request, Board $board)
+    {
+        $inputs = $request->input();
+        $this->validate($request,board::$rules);
+        $this->imgValidate($request);
+        $uploadedFile = $this->saveImage($request->file('photo'));
+        
+        return view('boards.check');
+    }
+
+
+    public function create(Request $request, Board $board)
     {
 
         $this->validate($request,board::$rules); //バリデーション
         $user_id = Auth::id(); // ログインユーザIDを取得する
-        $board = new board;
         $board->title = $request->title;
         $board->text = $request->text;
         $board->user_id = $user_id;
