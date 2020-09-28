@@ -135,5 +135,4 @@
 
   </div>
   <!-- /.container -->
-
-  
+  @endsection
