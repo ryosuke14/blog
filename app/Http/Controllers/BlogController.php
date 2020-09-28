@@ -49,13 +49,13 @@ class BlogController extends Controller
         $uploadedFile = $this->saveImage($request->file('photo'));
         $data = [
             'inputs'       => $inputs,
-            'uploadedFile' => str_replace('public', 'strage', $uploadedFile),
+            'uploadedFile' => str_replace('public', 'storage', $uploadedFile),
         ];
 
         return view('boards.check', $data);
     }
 
-    public function saveImage($file)
+    private function saveImage($file)
     {
         return $file->storeAs('public/tmp_images', $file->hashName());
     }
