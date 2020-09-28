@@ -41,14 +41,23 @@ class BlogController extends Controller
         ]);
     }
 
-    public function check(Request $request, Board $board)
+    public function check(Request $request)
     {
         $inputs = $request->input();
         $this->validate($request,board::$rules);
         $this->imgValidate($request);
         $uploadedFile = $this->saveImage($request->file('photo'));
-        
-        return view('boards.check');
+        $data = [
+            'inputs'       => $inputs,
+            'uploadedFile' => str_replace('public', 'strage', $uploadedFile),
+        ];
+
+        return view('boards.check', $data);
+    }
+
+    public function saveImage($file)
+    {
+        return $file->storeAs('public/tmp_images', $file->hashName());
     }
 
 
