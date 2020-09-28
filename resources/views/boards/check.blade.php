@@ -38,7 +38,6 @@
                             <img src=" {{ url($uploadedFile) }}" alt="" width="100px" height="100px">
                             <input class="form-control" type="hidden" name="photo" value="{{ $uploadedFile }}">
                         </div>
-                        {{dd($uploadedFile)}}
                         <button type="submit" class="btn btn-primary" >
                             {{ __('内容確認') }}
                         </button>
