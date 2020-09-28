@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">ブログ投稿</div>
                     <div class="card-body">
-                        <form action="{{ route('create') }}" method ="post" enctype="multipart/form-data">
+                        <form action="{{ route('check') }}" method ="post" enctype="multipart/form-data">
                             @csrf
                             @if (count($errors) > 0)
                             <p style="color: red; text-align: center;">再入力してください</p>
