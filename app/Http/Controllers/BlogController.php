@@ -69,8 +69,6 @@ class BlogController extends Controller
         $board->title = $request->title;
         $board->text = $request->text;
         $board->user_id = $user_id;
-        $board->tag = $request->tag;
-        //dd($event->user_id);
 
        // $event->tags()->sync($request->tags);
         $board->save();

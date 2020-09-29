@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10 content">
             <div class="card">
-                <form action="/board/create" method ="post" enctype="multipart/form-data">
+                <form action="{{ route('create') }}" method ="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group col-md-6 row">
                         <label>タイトル:</label>

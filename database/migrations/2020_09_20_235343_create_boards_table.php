@@ -18,7 +18,6 @@ class CreateBoardsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->string('text');
-            $table->string('tag');
             $table->timestamps();
         });
     }
