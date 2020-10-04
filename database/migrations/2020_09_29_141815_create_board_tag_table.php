@@ -14,7 +14,9 @@ class CreateBoardTagTable extends Migration
     public function up()
     {
         Schema::create('board_tag', function (Blueprint $table) {
-            $table->id();
+            $table->integer('board_id')->unsignd();
+            $table->integer('tag_id')->unsigned();
+            $table->primary(['board_id', 'tag_id']);
             $table->timestamps();
         });
     }
