@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\board;
+use App\Photo;
 
 
 
@@ -61,7 +62,7 @@ class BlogController extends Controller
     }
 
 
-    public function create(Request $request, Board $board)
+    public function create(Request $request, Board $board, Photo $photo)
     {
 
         $this->validate($request,board::$rules); //バリデーション

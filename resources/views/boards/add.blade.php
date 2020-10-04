@@ -24,7 +24,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="date" class="col-md-6 col-form-label text-md-right">{{ _('タイトル') }}</label>
-                                    <input class="form-control" type="text" name="title" >
+                                    <input class="form-control" type="text" name="title" value="{{ old('title') }}">
                                 </div>
                                 @if ($errors->has('title'))
                                     <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="erea_code" class="col-md-6 col-form-label text-md-right">{{ _('本文') }}</label>
-                                    <textarea class="form-control" name="text" rows="15"></textarea>
+                                    <textarea class="form-control" name="text" rows="15">{{ old('text') }}</textarea>
                                 </div>
                                 @if ($errors->has('text'))
                                 <span class="invalid-feedback" role="alert">
