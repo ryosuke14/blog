@@ -17,14 +17,14 @@ class BlogController extends Controller
 {
     protected $TAGS = ['sports' => 'スポーツ', 'travel' => '旅行', 'music' => '音楽'];
 
-    public function index (Request $request)
+    public function index (Board $board)
     {
         //$tags = Tag::pluck('id','name')->toArray();
         //dd($tags);
         $user = Auth::user();
         $user_id = Auth::id();
         //$sort = $request->sort;
-        $boards = DB::table('boards')->simplePaginate(5);
+        $boards = $board->orderBy('created_at', 'desc')->paginate(5);
         //dd($user->name);
         //return view('events.index',['events'=>$events], ['tags' =>  $this->TAGS], ['user' => $user]);
         return view('boards.index',['user'=>$user],['boards'=>$boards],['tags' =>  $this->TAGS]);    

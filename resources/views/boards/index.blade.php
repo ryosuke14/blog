@@ -20,7 +20,11 @@
           <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
           <div class="card-body">
             <h2 class="card-title">{{$board->title}}</h2>
-            <p class="card-text">{{$board->text}}</p>
+            @if (mb_strlen($board->text) > 50)
+            <p class="card-text">{{mb_substr($board->text,0 , 50). '・・・' }}</p>
+            @else
+            <p class="card-text">{{ $board->text }}</p>
+            @endif
             <a href="{{ route('blog') }}" class="btn btn-primary">もっと読む &rarr;</a>
           </div>
           <div class="card-footer text-muted">
@@ -30,14 +34,7 @@
         </div>
 
         <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
+        {{ $boards->links() }}
 
       </div>
 
