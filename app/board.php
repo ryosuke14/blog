@@ -11,4 +11,9 @@ class board extends Model
         'title' => 'required|min:3',
         'text' => 'required',
     );
+
+    public function tag()
+    {
+        return $this->belongsToMany('App\Tag', 'board_tag', 'board_id', 'tag_id');
+    }
 }

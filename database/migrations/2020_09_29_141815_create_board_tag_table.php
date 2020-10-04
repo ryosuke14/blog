@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoardsTable extends Migration
+class CreateBoardTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateBoardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('boards', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('title');
-            $table->string('text');
+        Schema::create('board_tag', function (Blueprint $table) {
+            $table->integer('board_id')->unsignd();
+            $table->integer('tag_id')->unsigned();
+            $table->primary(['board_id', 'tag_id']);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateBoardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('boards');
+        Schema::dropIfExists('board_tag');
     }
 }
