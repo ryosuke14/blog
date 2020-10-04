@@ -10,6 +10,6 @@
 </style>
 <div class="complete">
     <h2 class="">投稿完了</h2>
-    <p>トップへ</p>
+    <p><a href="{{ route('index') }}">トップへ</a></p>
 </div>
 @endsection

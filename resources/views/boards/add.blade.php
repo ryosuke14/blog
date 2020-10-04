@@ -9,7 +9,12 @@
         padding-top: 40px;
         padding-bottom: 40px;
     }
+
+    .guest {
+        color: red;
+    }
 </style>
+@auth
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10 content">
@@ -46,9 +51,9 @@
                             <div class="form-group row">
                                 <div class="col-md-6">
                                     <label for="event_name" class="col-md-6 col-form-label text-md-right">{{ _('タグ') }}</label>
-                                    @foreach($tags as $key=>$tag)
+                                    @foreach($tags as $tag)
                                     <div class="form-check form-check-inline">
-                                        <label for="{{ $key }}"><input type="checkbox" name="tag[]" value="{{ $tag }}" id="{{ $key }}">{{ $key }}</label>
+                                        <label for="{{ $tag->id }}"><input type="checkbox" name="tag[]" value="{{ $tag->id }}" id="{{ $tag->id }}">{{ $tag->tag }}</label>
                                     </div>
                                     @endforeach
                                 </div>
@@ -70,4 +75,8 @@
         </div>
     </div>
 </div>
+@endauth
+@guest
+    <p class="guest">no access</p>
+@endguest
 @endsection
