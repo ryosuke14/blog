@@ -25,7 +25,7 @@
             @else
             <p class="card-text">{{ $board->text }}</p>
             @endif
-            <a href="{{ route('blog') }}" class="btn btn-primary">もっと読む &rarr;</a>
+          <a href="blog/{{ $board->id }}" class="btn btn-primary">もっと読む &rarr;</a>
           </div>
           <div class="card-footer text-muted">
           投稿日：{{ $board->created_at }}

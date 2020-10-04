@@ -106,9 +106,10 @@ class BlogController extends Controller
     }
 
 
-    public function blog()
+    public function blog(Board $board, $id)
     {
-        return view('blog');
+        $boards = $board->find($id);
+        return view('blog',compact('id'), ['boards' => $boards]);
     }
 }
 
