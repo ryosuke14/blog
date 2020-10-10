@@ -41,6 +41,23 @@
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
 
+
+        <!-- profile -->
+        <div class = "testimonials text-center bg-light">
+          <div class="my-4 ">       
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0  text-align:center ">
+              <img class="img-fluid rounded-circle mb-3" src="img/EEX-GB2B_150×150.jpg" alt="">
+              <h5>おっくのんの政治チャンネル</h5>
+              <p class="font-weight-light mb-0">このブログでは20代の3人が政治やニュースを</p>
+              <p class="font-weight-light mb-0">できるだけわかりやすく考察しています</p>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
         <!-- Search Widget -->
         <div class="card my-4">
           <h5 class="card-header">Search</h5>
@@ -97,7 +114,7 @@
           </div>
         </div>
 
-      </div>
+
 
     </div>
     <!-- /.row -->
