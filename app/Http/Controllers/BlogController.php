@@ -46,6 +46,7 @@ class BlogController extends Controller
 
     public function check(Request $request)
     {
+        //dd( $request);
         $user_id = Auth::id();        
         $inputs = $request->input();
         $this->validate($request,board::$rules);
@@ -109,7 +110,7 @@ class BlogController extends Controller
     public function blog(Board $board, $id)
     {
         $boards = $board->find($id);
-        return view('blog',compact('id'), ['boards' => $boards]);
+        return view('detail.blog',compact('id'), ['boards' => $boards]);
     }
 }
 

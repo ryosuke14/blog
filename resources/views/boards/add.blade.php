@@ -28,7 +28,7 @@
                              @endif
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label for="date" class="col-md-6 col-form-label text-md-right">{{ _('タイトル') }}</label>
+                                    <label for="date" class="col-md-6 col-form-label text-md-right">title</label>
                                     <input class="form-control" type="text" name="title" value="{{ old('title') }}">
                                 </div>
                                 @if ($errors->has('title'))
@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label for="erea_code" class="col-md-6 col-form-label text-md-right">{{ _('本文') }}</label>
+                                    <label for="erea_code" class="col-md-6 col-form-label text-md-right">text</label>
                                     <textarea class="form-control" name="text" rows="15">{{ old('text') }}</textarea>
                                 </div>
                                 @if ($errors->has('text'))
@@ -50,7 +50,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label for="event_name" class="col-md-6 col-form-label text-md-right">{{ _('タグ') }}</label>
+                                    <label for="event_name" class="col-md-6 col-form-label text-md-right">タグ</label>
                                     @foreach($tags as $tag)
                                     <div class="form-check form-check-inline">
                                         <label for="{{ $tag->id }}"><input type="checkbox" name="tag[]" value="{{ $tag->id }}" id="{{ $tag->id }}">{{ $tag->tag }}</label>
@@ -59,14 +59,14 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="photo" class="col-md-4 col-form-label text-md-right">{{ __('写真') }}</label>
+                                <label for="photo" class="col-md-4 col-form-label text-md-right">写真</label>
 
                                 <div class="col-md-6">
                                     <input id="photo" type="file" name="photo" class="@error('photo') is-invalid @enderror">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary" >
-                                {{ __('内容確認') }}
+                            内容確認
                             </button>
                          </form>    
                     </div>
