@@ -16,4 +16,9 @@ class board extends Model
     {
         return $this->belongsToMany('App\Tag', 'board_tag', 'board_id', 'tag_id');
     }
+
+    public function photo()
+    {
+        return $this->hasOne('App\Photo');
+    }
 }
