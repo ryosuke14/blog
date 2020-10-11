@@ -44,7 +44,7 @@ class BlogController extends Controller
         ]);
     }
 
-    public function check(Request $request)
+    public function check(Request $request, Tag $tag)
     {
         //dd( $request);
         $user_id = Auth::id();        
