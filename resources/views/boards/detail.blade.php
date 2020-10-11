@@ -88,14 +88,14 @@
               <div class="row">
                 <div class="col-lg-6">
                   <ul class="list-unstyled mb-0">
-<!--
+
                     @foreach($tags as $tag)
                       <div>
                         <label for="{{ $tag->id }}"><input type="checkbox" name="tag[]" value="{{ $tag->id }}" id="{{ $tag->id }}">{{ $tag->tag }}</label>
                       </div>
                     @endforeach
 
--->
+
 
                     <li>
                       <a href="#">{{ message->text }}</a>
