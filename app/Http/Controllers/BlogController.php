@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Board;
-use App\Photo;
 use App\Tag;
 
 
@@ -19,15 +18,13 @@ class BlogController extends Controller
 
     public function index (Board $board)
     {
-        //$tags = Tag::pluck('id','name')->toArray();
-        //dd($tags);
         $user = Auth::user();
         $user_id = Auth::id();
         //$sort = $request->sort;
         $boards = $board->orderBy('created_at', 'desc')->paginate(5);
-        //dd($user->name);
+
         //return view('events.index',['events'=>$events], ['tags' =>  $this->TAGS], ['user' => $user]);
-        return view('boards.index',['user'=>$user],['boards'=>$boards],['tags' =>  $this->TAGS]);    
+        return view('boards.index',['user'=>$user, 'boards'=>$boards, 'tags' =>  $this->TAGS]);    
     }
 
     public function add(Tag $tag)
@@ -46,7 +43,6 @@ class BlogController extends Controller
 
     public function check(Request $request, Tag $tag)
     {
-        //dd( $request);
         $user_id = Auth::id();        
         $inputs = $request->input();
         $this->validate($request,board::$rules);
@@ -69,12 +65,13 @@ class BlogController extends Controller
     }
 
 
-    public function created(Request $request, Board $board, Photo $photo, Tag $tag)
+    public function created(Request $request, Board $board, Tag $tag)
     {
         $user_id = Auth::id(); 
         $board->title = $request->title;
         $board->text = $request->text;
         $board->user_id = $user_id;
+        $board->photo = $request->photo;
         $board->save();
 
         $data = $request->session()->get('data');
@@ -84,10 +81,6 @@ class BlogController extends Controller
         $tmp = str_replace('storage/', 'public/', $tmp_path);
         $request->session()->forget('data');
         Storage::move($tmp, $storage_path);
-
-        $photo->board_id = $board->id;
-        $photo->photo = $filename;
-        $photo->save();
 
         foreach ($request->tag as $tg) {
             $tag->board()->attach(
@@ -107,7 +100,7 @@ class BlogController extends Controller
     }
 
 
-    public function blog(Board $board, $id)
+    public function blog(Board $board, Tag $tag, $id)
     {
         $boards = $board->find($id);
         return view('detail.blog',compact('id'), ['boards' => $boards]);

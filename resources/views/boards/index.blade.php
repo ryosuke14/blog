@@ -17,7 +17,7 @@
         <!-- Blog Post -->
         <div class="card mb-4">
         @foreach($boards as $board)
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+          <img class="card-img-top" src="" alt="Card image cap">
           <div class="card-body">
             <h2 class="card-title">{{$board->title}}</h2>
             @if (mb_strlen($board->text) > 50)
