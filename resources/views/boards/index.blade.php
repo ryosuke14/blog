@@ -17,7 +17,7 @@
         <!-- Blog Post -->
         <div class="card mb-4">
         @foreach($boards as $board)
-          <img class="card-img-top" src="" alt="Card image cap">
+        <img class="card-img-top" src="{{ asset('storage/images/'. $board->photo) }}" alt="Card image cap" width="200px" height="350px">
           <div class="card-body">
             <h2 class="card-title">{{$board->title}}</h2>
             @if (mb_strlen($board->text) > 50)
@@ -47,7 +47,7 @@
           <div class="my-4 ">       
             <div class="testimonial-item mx-auto mb-5 mb-lg-0  text-align:center ">
               <img class="img-fluid rounded-circle mb-3" src="img/EEX-GB2B_150×150.jpg" alt="">
-              <h5>おっくのんの政治チャンネル</h5>
+              <h5>おっくんの政治チャンネル</h5>
               <p class="font-weight-light mb-0">このブログでは20代の3人が政治やニュースを</p>
               <p class="font-weight-light mb-0">できるだけわかりやすく考察しています</p>
             </div>
