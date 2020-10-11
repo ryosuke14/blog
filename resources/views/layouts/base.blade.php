@@ -40,7 +40,7 @@
                   @csrf
               </form>
 
-              <a class="dropdown-item" href="">記事一覧</a>
+              <a class="dropdown-item" href="{{ route('index') }}">記事一覧</a>
               <form id="logout-form" action="" method="POST" class="d-none">
                   @csrf
               </form>
