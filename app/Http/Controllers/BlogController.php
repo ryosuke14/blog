@@ -71,8 +71,6 @@ class BlogController extends Controller
         $board->title = $request->title;
         $board->text = $request->text;
         $board->user_id = $user_id;
-        $board->photo = $request->photo;
-        $board->save();
 
         $data = $request->session()->get('data');
         $tmp_path = $data['uploadedFile'];
@@ -81,6 +79,9 @@ class BlogController extends Controller
         $tmp = str_replace('storage/', 'public/', $tmp_path);
         $request->session()->forget('data');
         Storage::move($tmp, $storage_path);
+        
+        $board->photo = $filename;
+        $board->save();
 
         foreach ($request->tag as $tg) {
             $tag->board()->attach(
