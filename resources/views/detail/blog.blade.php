@@ -42,7 +42,7 @@
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form　action="comment/{{ $board->id }}" method ="post">              
+            <form　action="comment/{{ $boards->id }}" method ="post">              
             <div class="form-group">
                 <label for="name">ニックネーム</label>
                 <input type="text" class="form-control"　name="comment_name" id="inputAddress" placeholder="ニックネーム">
