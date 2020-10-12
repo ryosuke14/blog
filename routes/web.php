@@ -21,8 +21,6 @@ Route::post('/board/created','BlogController@created')->name('created');
 Route::get('blog/{id}', 'BlogController@blog')->name('blog');
 Route::get('comment/{id}', 'BlogController@comment')->name('comment');
 
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
