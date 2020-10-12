@@ -104,9 +104,22 @@ class BlogController extends Controller
     public function blog(Board $board, Tag $tag, $id)
     {
         $boards = $board->find($id);
+        $user = Auth::user();
         //dd($boards);
-        return view('detail.blog',compact('id'), ['boards' => $boards],['Tag'=> $tag]);
+        return view('detail.blog',compact('id'),['boards' => $boards],['user'=>$user],['Tag'=> $tag]);
     }
+
+    public function comment(Request $request)
+    {
+        $boards = $board->find($id);
+        $user = Auth::user();
+
+        return view('detail.blog',compact('id'),['boards' => $boards],['user'=>$user],['Tag'=> $tag]);
+    }
+
+
+
+
 }
 
 

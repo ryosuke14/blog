@@ -17,7 +17,7 @@
         <!-- Author -->
         <p class="lead">
           by
-          <a href="#">Start Bootstrap</a>
+          <a href="#">{{ Auth::user()->name }}</a>
         </p>
 
         <hr>
@@ -28,7 +28,8 @@
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+        <img class="card-img-top" src="{{ asset('storage/images/'. $boards->photo) }}" alt="Card image cap" width="200px" height="350px">
+
 
         <hr>
 
@@ -42,7 +43,7 @@
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form　action="" method ="post">              
+            <form　action="{{ route('comment') }}" method ="post">              
             <div class="form-group">
                 <label for="name">ニックネーム</label>
                 <input type="text" class="form-control"　name="comment_name" id="inputAddress" placeholder="ニックネーム">
