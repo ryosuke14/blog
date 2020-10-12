@@ -104,7 +104,8 @@ class BlogController extends Controller
     public function blog(Board $board, Tag $tag, $id)
     {
         $boards = $board->find($id);
-        return view('detail.blog',compact('id'), ['boards' => $boards]);
+        //dd($boards);
+        return view('detail.blog',compact('id'), ['boards' => $boards],['Tag'=> $tag]);
     }
 }
 
