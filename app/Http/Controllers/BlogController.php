@@ -116,8 +116,10 @@ class BlogController extends Controller
         $comment->comment_name = $request->comment_name;
         $comment->comment_text = $request->comment_text;
         $user = Auth::user();
+        $comment->save();
 
-        return view('detail.blog',compact('id'),['boards' => $boards],['user'=>$user],['Tag'=> $tag],['comment'=>$comment]);
+
+        return view('index',compact('id'),['boards' => $boards],['user'=>$user],['Tag'=> $tag],['comment'=>$comment]);
     }
 
 

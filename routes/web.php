@@ -19,7 +19,7 @@ Route::post('/board/check','BlogController@check')->name('check');
 Route::post('/board/created','BlogController@created')->name('created');
 
 Route::get('blog/{id}', 'BlogController@blog')->name('blog');
-Route::get('comment/{id}', 'BlogController@comment')->name('comment');
+//Route::post('comment/{id}', 'BlogController@comment')->name('comment');
 
 Auth::routes();
 

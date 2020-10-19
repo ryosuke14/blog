@@ -39,26 +39,35 @@
         <hr>
 
 
+
+
         <!-- Comments Form -->
+        <form　action="comment/{{ $boards->id }}" method ="post"> 
+
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form　action="comment/{{ $boards->id }}" method ="post"> 
+            @csrf
               <div class="form-group">
                 <label for="name">ニックネーム</label>
-                <input type="text" class="form-control"　name="comment_name" id="inputAddress" placeholder="ニックネーム">
+                <input type="text" class="form-control"　name="comment_name" id="name" placeholder="ニックネーム">
               </div>
               <div class="form-group">
                 <label for="comment">コメント</label>
                 <textarea class="form-control" name="comment_text" placeholder="コメント" rows="5"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary" >
-                                    {{ __('送信') }}
-              </button>
 
-            </form>
+              <input type="hidden" name="_token" value="{{csrf_token()}}">
+              <div class="form-group row mb-0">
+                <div class="col-md-8 offset-md-4 mt:10">
+                <input type="submit" class="btn btn-primary">
+                {{ __('イベント作成') }}
+                </button>
+                </div>
+              </div>
           </div>
         </div>
+        </form>
         
         <!-- Single Comment -->
         <div class="media mb-4">
