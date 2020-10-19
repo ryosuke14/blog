@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Board;
 use App\Tag;
+use App\comment;
+
 
 
 
@@ -111,15 +113,17 @@ class BlogController extends Controller
         return view('detail.blog',compact('id'),['boards' => $boards],['Tag'=> $tag],['user'=>$user]);
     }
 
-    public function comment(Request $request, comment $comment)
+    public function comment(Request $request, comment $comment,$id,Board $board,Tag $tag)
     {
+        //dd($request->comment_name);
         $comment->comment_name = $request->comment_name;
         $comment->comment_text = $request->comment_text;
         $user = Auth::user();
         $comment->save();
+        $boards = $board->find($id);
 
 
-        return view('index',compact('id'),['boards' => $boards],['user'=>$user],['Tag'=> $tag],['comment'=>$comment]);
+        return view('detail.blog',compact('id'),['boards' => $boards],['user'=>$user],['Tag'=> $tag],['comment'=>$comment]);
     }
 
 
