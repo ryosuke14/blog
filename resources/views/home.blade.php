@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <a href="{{ route('index') }}">ホームへ</a>
                 </div>
             </div>
         </div>
