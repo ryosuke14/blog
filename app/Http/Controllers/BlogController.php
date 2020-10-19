@@ -105,8 +105,8 @@ class BlogController extends Controller
     {
         $boards = $board->find($id);
         $user = Auth::user();
-        //dd($boards);
-        return view('detail.blog',compact('id'),['boards' => $boards],['user'=>$user],['Tag'=> $tag]);
+        //dd($user);
+        return view('detail.blog',compact('id'),['boards' => $boards],['Tag'=> $tag],['user'=>$user]);
     }
 
     public function comment(Request $request,Comment $comment)
