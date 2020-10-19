@@ -43,11 +43,11 @@
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form　action="{{ route('comment') }}" method ="post">              
-            <div class="form-group">
+            <form　action="comment/{{ $boards->id }}" method ="post"> 
+              <div class="form-group">
                 <label for="name">ニックネーム</label>
                 <input type="text" class="form-control"　name="comment_name" id="inputAddress" placeholder="ニックネーム">
-            </div>
+              </div>
               <div class="form-group">
                 <label for="comment">コメント</label>
                 <textarea class="form-control" name="comment_text" placeholder="コメント" rows="5"></textarea>
