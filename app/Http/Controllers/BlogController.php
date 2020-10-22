@@ -122,11 +122,8 @@ class BlogController extends Controller
         $comment->save();
         $boards = $board->find($id);
 
-
-        return view('detail.blog',compact('id'),['boards' => $boards],['user'=>$user],['Tag'=> $tag],['comment'=>$comment]);
+        return redirect()->route('blog',compact('id'));
     }
-
-
 }
 
 
