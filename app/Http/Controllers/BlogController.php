@@ -118,14 +118,14 @@ class BlogController extends Controller
         //dd($request->comment_name);
         $comment->comment_name = $request->comment_name;
         $comment->comment_text = $request->comment_text;
-        $comment->board_id = $board->id;
-
+        $boards = $board->find($id);
+        //dd($id);
+        $comment->borad_id = $id;
         $user = Auth::user();
         $comment->save();
         $boards = $board->find($id);
-
-        return redirect()->route('blog',compact('id'));
+        $comment = $this->findboard($id);
+        return redirect()->route('blog',compact('id'),['comment' => $comment]);
     }
 }
-
 
