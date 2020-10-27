@@ -107,9 +107,10 @@ class BlogController extends Controller
     {
         //dd($board);
         $boards = $board->find($id);
-        //dd($boards);
+        //$comments = $comment;
+        //dd($comments);
         $user = Auth::user();
-        
+        //dd($user);
         return view('detail.blog',compact('id'),['boards' => $boards],['Tag'=> $tag],['user'=>$user]);
     }
 
@@ -119,13 +120,23 @@ class BlogController extends Controller
         $comment->comment_name = $request->comment_name;
         $comment->comment_text = $request->comment_text;
         $boards = $board->find($id);
-        //dd($id);
+        //dd($user);
         $comment->borad_id = $id;
         $user = Auth::user();
         $comment->save();
         $boards = $board->find($id);
         $comment = $this->findboard($id);
-        return redirect()->route('blog',compact('id'),['comment' => $comment]);
+        //dd($comment);
+        return redirect()->route('blog',compact('id'));
     }
+
+    function findboard($borad_id = null) {
+        $query = DB::table('comments');
+        if ($borad_id) {
+            $query->where('borad_id', $borad_id);
+        }
+        return $query->get();
+    }
+
 }
 
