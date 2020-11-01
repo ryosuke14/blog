@@ -16,25 +16,25 @@
 
         <!-- Blog Post -->
         <div class="card mb-4">
-        @foreach($boards as $board)
-        <img class="card-img-top" src="{{ asset('storage/images/'. $board->photo) }}" alt="Card image cap" width="200px" height="350px">
+        @foreach($posts as $post)
+        <img class="card-img-top" src="{{ asset('storage/images/'. $post->photo) }}" alt="Card image cap" width="200px" height="350px">
           <div class="card-body">
-            <h2 class="card-title">{{$board->title}}</h2>
-            @if (mb_strlen($board->text) > 50)
-            <p class="card-text">{{mb_substr($board->text,0 , 50). '・・・' }}</p>
+            <h2 class="card-title">{{$post->title}}</h2>
+            @if (mb_strlen($post->text) > 50)
+            <p class="card-text">{{mb_substr($post->text,0 , 50). '・・・' }}</p>
             @else
-            <p class="card-text">{{ $board->text }}</p>
+            <p class="card-text">{{ $post->text }}</p>
             @endif
-          <a href="blog/{{ $board->id }}" class="btn btn-primary">もっと読む &rarr;</a>
+          <a href="blog/{{ $post->id }}" class="btn btn-primary">もっと読む &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-          投稿日：{{ $board->created_at }}
+          投稿日：{{ $post->created_at }}
           </div>
         @endforeach
         </div>
 
         <!-- Pagination -->
-        {{ $boards->links() }}
+        {{ $posts->links() }}
 
       </div>
 
@@ -62,11 +62,11 @@
             <div class="input-group">
               <form action="{{ route('reserch') }}" method="post">
                 @csrf
-                <input type="text" name="reserch_word" value="" class="form-control" placeholder="検索ワード">
+                <input type="text" name="reserch_word" value="{{ $reserch_word }}" class="form-control" placeholder="検索ワード">
                 <span class="input-group-append">
                   <button type="submit" class="btn btn-secondary" type="button">検索</button>
                 </span>
-              </form>
+            </form>
             </div>
           </div>
         </div>

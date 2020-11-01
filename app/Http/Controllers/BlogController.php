@@ -138,5 +138,16 @@ class BlogController extends Controller
         return $query->get();
     }
 
+    public function reserch(Request $request)
+    {
+        $reserch_word = $request->reserch_word;
+        if($reserch_word !== '') {
+            $posts = Board::where('text','like','%'.$reserch_word.'%')->orderBy('created_at','desc')->paginate(5);
+       }else {
+         $posts = Board::orderBy('created_at','desc')->paginate(5);
+        }
+        return view('boards.reserch', ['reserch_word' => $reserch_word, 'posts' => $posts]);
+    }
+
 }
 

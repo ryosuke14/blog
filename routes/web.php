@@ -17,6 +17,8 @@ Route::get('/', 'BlogController@index')->name('index');
 Route::get('/board/add','BlogController@add')->name('add');
 Route::post('/board/check','BlogController@check')->name('check');
 Route::post('/board/created','BlogController@created')->name('created');
+Route::post('/reserch','BlogController@reserch')->name('reserch');
+
 
 Route::get('blog/{id}', 'BlogController@blog')->name('blog');
 Route::post('blog/comment/{id}', 'BlogController@comment')->name('comment');
