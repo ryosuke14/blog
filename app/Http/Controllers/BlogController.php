@@ -103,15 +103,17 @@ class BlogController extends Controller
     }
 
 
-    public function blog(Board $board, Tag $tag, $id)
+    public function blog(Board $board, Tag $tag, $id,comment $comment)
     {
         //dd($board);
-        $boards = $board->find($id);
-        //$comments = $comment;
-        //dd($comments);
         $user = Auth::user();
-        //dd($user);
-        return view('detail.blog',compact('id'),['boards' => $boards],['Tag'=> $tag],['user'=>$user]);
+        $user_id = Auth::id();
+        $boards = $board->find($id);
+        $comments = comment::all();
+        $comments->borad_id = $id;
+        $comments = $this->findboard($id);
+        dd($comments->comment_name);
+        return view('detail.blog',compact('id'),['boards' => $boards],['Tag'=> $tag],['user'=>$user],['comments' => $comments]);
     }
 
     public function comment(Request $request, comment $comment,$id,Board $board,Tag $tag)
@@ -135,7 +137,7 @@ class BlogController extends Controller
         if ($borad_id) {
             $query->where('borad_id', $borad_id);
         }
-        return $query->get();
+        return $query->first();
     }
 
     public function reserch(Request $request)
